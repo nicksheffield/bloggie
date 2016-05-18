@@ -6,7 +6,7 @@
 		class="sidebar"
 	></div>
 
-	<div ratio="5" layout="col">
+	<div ratio="5" layout="col" class="content-container">
 		<div class="content-header" layout="row" justify="between" align="center">
 			<h2>Content</h2>
 			<a href="#/new" class="btn-new">Create post</a>
@@ -25,7 +25,7 @@
 			
 			<div ratio="3" class="post-display">
 				<a href="#/edit/{{ currentPost._id }}" class="btn-edit edit"><i class="fa fa-pencil"></i></a>
-			
+				
 				<h2>{{ currentPost.title }}</h2>
 				
 				<div marked="currentPost.content"></div>
