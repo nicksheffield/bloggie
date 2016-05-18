@@ -22,7 +22,9 @@ router.get('/', function(req, res) {
 			posts.push(post)
 			return posts
 		}, [])
-		.filter(post => post.published_at)
+		.filter(function(post){
+			return post.published_at
+		})
 	
 	res.render('home', _.merge({}, config.theme_data, {
 		posts: posts,

@@ -29,7 +29,9 @@ app.engine('html', require('hogan-express'))
 fs.readdir(partialsDir, function(err, files) {
 	app.set('partials', 
 		files
-			.filter(file => file != '.DS_Store')
+			.filter(function(file) {
+				return file != '.DS_Store'
+			})
 			.reduce(function(partials, file) {
 				var name = path.basename(file, '.html')
 				partials[name] = [partialsDir, '/', name, '.html'].join('')
