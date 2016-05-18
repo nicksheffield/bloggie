@@ -13,15 +13,13 @@
 		</div>
 		
 		<div ratio="1" layout="row">
-			<div ratio="1" layout="col" class="nav-bar">
-				<ul class="posts-list">
-					<li ng-repeat="post in posts" ng-click="choosePost(post)" ng-class="{chosen: currentPost._id == post._id}">
-						<p class="post-title">{{ post.title }}</p>
-						<p ng-show="post.published_at" class="published-when">Published: {{ post.published_at | timeAgo }}</p>
-						<p ng-show="!post.published_at" class="draft">Draft</p>
-					</li>
-				</ul>
-			</div>
+			<ul ratio="1" class="posts-list">
+				<li ng-repeat="post in posts" ng-click="choosePost(post)" ng-class="{chosen: currentPost._id == post._id}">
+					<p class="post-title">{{ post.title }}</p>
+					<p ng-show="post.published_at" class="published-when">Published: {{ post.published_at | timeAgo }}</p>
+					<p ng-show="!post.published_at" class="draft">Draft</p>
+				</li>
+			</ul>
 			
 			<div ratio="3" class="post-display">
 				<a href="#/edit/{{ currentPost._id }}" class="btn-edit edit"><i class="fa fa-pencil"></i></a>
