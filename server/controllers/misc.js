@@ -22,6 +22,9 @@ router.get('/', function(req, res) {
 			posts.push(post)
 			return posts
 		}, [])
+		.sort(function(post) {
+			return new Date(post.published_at).valueOf()
+		})
 		.filter(function(post){
 			return post.published_at
 		})

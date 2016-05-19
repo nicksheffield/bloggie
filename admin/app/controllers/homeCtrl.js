@@ -1,7 +1,9 @@
 angular.module('app.controllers')
 
 .controller('homeCtrl', function($scope, $posts) {
-	$scope.posts = $posts.all
+	$posts.load().then(function() {
+		$scope.posts = $posts.all
+	})
 	
 	$posts.all.$promise.then(function() {
 		$scope.currentPost = $posts.all[0]

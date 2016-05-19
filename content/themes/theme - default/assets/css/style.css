@@ -2,9 +2,25 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 62.5%;
+}
+
 body {
-	font-family: 'Helvetica Neue', Helvetica;
+	font-family: 'Merriweather', 'Helvetica Neue', Helvetica;
 	margin: 0;
+	font-weight: 200;
+	font-size: 1.8em;
+	color: #3A4145;
+}
+
+p {
+	line-height: 1.75em;
+	margin: 0 0 1.75em 0;
+}
+
+b, strong {
+	font-weight: 700;
 }
 
 .container {
@@ -38,7 +54,47 @@ nav ul {
 	margin: 0;
 }
 
+.post {
+	padding-bottom: 1em;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 1em;
+}
+
 .post h2 a {
 	text-decoration: none;
 	color: inherit;
+}
+
+.single .container {
+	width: 710px;
+	margin-top: 7em;
+	-webkit-font-smoothing: antialiased;
+}
+
+.single h1 {
+	font-size: 5rem;
+	letter-spacing: -2px;
+	text-indent: -3px;
+}
+
+h1 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1, h2, h3 {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: 700;
+}
+
+pre {
+	background: #272822;
+	color: #fff;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	line-height: 1.5;
+	tab-size: 4;
+	font-size: 0.9em;
+	hyphens: none;
+	padding: 1em;
+	border-radius: 0.3em;
 }

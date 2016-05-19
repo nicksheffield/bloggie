@@ -2,7 +2,10 @@
 	
 	<div class="container">
 		{{# posts }}
-			{{> post }}
+			<div class="post">
+				<h2><a href="/{{ slug }}">{{ title }}</a></h2>
+				{{{ content }}}
+			</div>
 		{{/ posts }}
 	</div>
 

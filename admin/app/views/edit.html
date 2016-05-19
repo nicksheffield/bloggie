@@ -1,43 +1,33 @@
-<header>
-	<h1><a href="#/">Bloggie Admin</a></h1>
-</header>
+<div layout="row" ratio="1">
+	<div
+		ng-include="'views/sidebar.html'"
+		ng-controller="sidebarCtrl"
+		ratio="1"
+		class="sidebar"
+	></div>
 
-<div class="post-editor" ratio="1" layout="row" align="start">
-
-	<div ratio="2" class="post-editor-leftbar">
-		<h2>Edit Post: {{ originalTitle }}</h2>
-		
-		<div class="form-row">
-			<label for="title">Post Title</label>
-			<input type="text" id="title" ng-model="post.title">
-		</div>
-		
-		<div class="form-row">
-			<label for="content">Post Content (markdown)</label>
-			<textarea id="content" ng-model="post.content"></textarea>
-		</div>
-		
-		<div class="form-row">
-			<label for="css">Custom CSS</label>
-			<textarea id="css" ng-model="post.css"></textarea>
-		</div>
-	</div>
-	
-	<div ratio="1" class="post-editor-sidebar">
-		<div class="box">
-			<div class="row" ng-if="post.created_at">
-				<span class="label">Published at:</span>
-				{{ post.published_at | date: 'dd/MM/yyyy' }}
-			</div>
-			<div class="row control-btns">
-				<button ng-click="save()" ng-if="!post.published_at" class="btn-draft">Save Draft</button>
-				<button ng-click="unpublish()" ng-if="post.published_at" class="btn-draft">Unpublish</button>
-				<button ng-click="publish()" class="btn-publish">
+	<div ratio="5" layout="col" class="editor-container">
+		<div class="editor-header" layout="row" justify="between" align="center">
+			<input type="text" ng-model="post.title" placeholder="Post Title" ratio="1">
+			<div class="editor-buttons">
+				<button ng-click="save()" ng-if="!post.published_at" class="btn btn-blue">Save Draft</button>
+				<button ng-click="unpublish()" ng-if="post.published_at" class="btn btn-red">Unpublish</button>
+				<button ng-click="publish()" class="btn btn-green">
 					<span ng-if="!post.published_at">Publish</span>
 					<span ng-if="post.published_at">Update</span>
 				</button>
+				<button ng-show="post._id" ng-click="delete()" class="btn btn-red">Delete</button>
+			</div>
+		</div>
+		
+		<div ratio="1" layout="row">
+			<div ratio="1" layout="col" class="editor-input-wrapper">
+				<textarea ng-model="post.content" class="editor-input" ratio="1" scroll-master="sync"></textarea>
+			</div>
+			
+			<div ratio="1" layout="col" class="editor-display" scroll-slave="sync">
+				<div marked="post.content" ratio="1"></div>
 			</div>
 		</div>
 	</div>
-	
 </div>

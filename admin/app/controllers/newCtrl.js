@@ -7,10 +7,12 @@ angular.module('app.controllers')
 	$scope.save = function() {
 		if($scope.post._id) {
 			Post.update({id: $scope.post._id}, $scope.post, function(data) {
-				$scope.post = data
+				$location.url('/edit/' + $scope.post._id)
 			})
 		} else {
-			$scope.post.$save()
+			$scope.post.$save(function() {
+				$location.url('/edit/' + $scope.post._id)
+			})
 		}
 	}
 	

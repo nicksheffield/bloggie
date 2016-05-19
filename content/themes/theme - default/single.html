@@ -1,11 +1,14 @@
-{{> header }}
+{{> singleheader }}
 
 	{{# css }}
 		<style scoped>{{ css }}</style>
 	{{/ css }}
 
 	<div class="container">
-		{{> post }}
+		<div class="post">
+			<h1><a href="/{{ slug }}">{{ title }}</a></h1>
+			{{{ content }}}
+		</div>
 	</div>
 
 {{> footer }}

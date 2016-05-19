@@ -1,22 +1,14 @@
 angular.module('app.controllers')
 
-.controller('editCtrl', function($routeParams, $scope, $posts, Post) {
+.controller('editCtrl', function($routeParams, $scope, $location, $posts, Post) {
 	
-	if($posts.all.resolved) {
+	$posts.load().then(function() {
 		$scope.post = _.find($posts.all, function(post) {
 			return post._id == $routeParams.id
 		})
 		
 		$scope.originalTitle = $scope.post.title
-	} else {
-		$posts.all.$promise.then(function() {
-			$scope.post = _.find($posts.all, function(post) {
-				return post._id == $routeParams.id
-			})
-			
-			$scope.originalTitle = $scope.post.title
-		})
-	}
+	})
 	
 	$scope.save = function() {
 		Post.update({id: $scope.post._id}, $scope.post, function(data) {
@@ -36,5 +28,9 @@ angular.module('app.controllers')
 		$scope.save()
 	}
 	
-	
+	$scope.delete = function() {
+		Post.delete({id: $scope.post._id}, function(data) {
+			$location.url('/')
+		})
+	}
 })

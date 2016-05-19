@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------
 var express = require('express')
 var bodyParser = require('body-parser')
+var _ = require('lodash')
 var fs = require('fs')
 var path = require('path')
 var config = require('../config')
@@ -12,6 +13,7 @@ var app = express()
 
 var themeDir = __dirname + '/../content/themes/' + config.theme
 var partialsDir = themeDir + '/partials'
+var ip = require('os').networkInterfaces().en0[1].address
 
 
 // --------------------------------------------------------------------------------
@@ -46,11 +48,11 @@ fs.readdir(partialsDir, function(err, files) {
 // --------------------------------------------------------------------------------
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use('/admin', express.static('./admin/'))
 app.use('/components', express.static('./components/'))
 app.use('/assets', express.static(folder('content/themes/' + config.theme + '/assets')))
+app.use('/admin', express.static('./admin/'))
 app.use(function(req, res, next) {
-	console.log(req.method, req.url)
+	if(req.url != '/favicon.ico') console.log(req.method, req.url)
 	next()
 })
 
@@ -59,17 +61,25 @@ app.use(function(req, res, next) {
 //  Start express
 // --------------------------------------------------------------------------------
 app.listen(config.port, function() {
-	var msg = '| Bloggie running on http://'
-		+ require('os').networkInterfaces().en0[1].address
-		+ ':'
-		+ config.port
-		+ ' |'
+	var msg = '| Bloggie running'
+	var local = '|    local: http://localhost:'+config.port
+	var pub = '| external: http://'+ip+':'+config.port
+	var max = _.max([msg.length, local.length, pub.length])
 
-	var dashes = repeat(msg.length, '-')
+	var dashes = repeat(max+2, '-')
+	
+	function rSpace(str, len) {
+		var amount = len - str.length;
+		var oStr = ''
+		for(var i=0; i<amount; i++){oStr += ' '}
+		return oStr
+	}
 
 	console.log('')
 	console.log(dashes)
-	console.log(msg)
+	console.log(msg + rSpace(msg, max) + ' |')
+	console.log(local + rSpace(local, max) + ' |')
+	console.log(pub + rSpace(pub, max) + ' |')
 	console.log(dashes)
 })
 

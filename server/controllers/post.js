@@ -18,6 +18,7 @@ var Schema = {
 	title: null,
 	content: null,
 	published_at: null,
+	created_at: null,
 	css: null
 }
 
