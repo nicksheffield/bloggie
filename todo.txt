@@ -1,0 +1,6 @@
+Bloggie Todo
+
+[ ] Combo button (publish, unpublish, save, delete)
+[ ] Post extras sidebar
+[-] Options page
+[√] Make default db file

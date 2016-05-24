@@ -1,0 +1,34 @@
+<div layout="row" ratio="1">
+	<div
+		ng-include="'views/sidebar.html'"
+		ng-controller="sidebarCtrl"
+		ratio="1"
+		class="sidebar"
+	></div>
+
+	<div ratio="5" layout="col" class="content-container">
+		<div class="content-header" layout="row" justify="between" align="center">
+			<h2>Options</h2>
+			<button class="btn btn-green" ng-click="save()">Save</button>
+		</div>
+		
+		<div ratio="1" class="options-container">
+			<div class="option-row">
+				<label for="head">Header Injection</label>
+				<p>This content is added wherever you use <code ng-non-bindable>{{ head }}</code></p>
+				<textarea id="head" ng-model="options.head" class="option-textarea"></textarea>
+			</div>
+			
+			<div class="option-row">
+				<label for="foot">Footer Injection</label>
+				<p>This content is added wherever you use <code ng-non-bindable>{{ foot }}</code></p>
+				<textarea id="foot" ng-model="options.foot" class="option-textarea"></textarea>
+			</div>
+			
+			<div class="option-row">
+				<label for="posts">Posts per page</label>
+				<input type="number" id="posts" ng-model="options.postsPerPage" class="option-input">
+			</div>
+		</div>
+	</div>
+</div>

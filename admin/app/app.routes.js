@@ -19,6 +19,11 @@ angular.module('app.routes')
 			templateUrl: 'views/edit.html'
 		})
 		
+		.when('/options', {
+			controller: 'optionsCtrl',
+			templateUrl: 'views/options.html'
+		})
+		
 		.otherwise({
 			redirectTo: '/'
 		})

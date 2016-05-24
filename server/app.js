@@ -86,8 +86,9 @@ app.listen(config.port, function() {
 // --------------------------------------------------------------------------------
 //  Controllers
 // --------------------------------------------------------------------------------
-app.use('/',         require('./controllers/misc'))
-app.use('/api/post', require('./controllers/post'))
+app.use('/',            require('./controllers/misc'))
+app.use('/api/post',    require('./controllers/post'))
+app.use('/api/options', require('./controllers/options'))
 
 
 // --------------------------------------------------------------------------------
