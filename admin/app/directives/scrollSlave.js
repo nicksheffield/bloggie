@@ -5,7 +5,6 @@ angular.module('app.directives')
 		var em = el[0]
 		
 		scope.$watch('scrollSlave', function(val) {
-			console.log('change', val)
 			var h = em.scrollHeight - em.clientHeight
 			var y = val / 100 * h
 			em.scrollTop = y

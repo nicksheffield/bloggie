@@ -1,0 +1,60 @@
+.comboButton
+	-webkit-font-smoothing antialiased
+	position relative
+	
+	button
+		font inherit
+		padding 0.5em
+		border 0
+		outline 0
+		cursor pointer
+		position relative
+		z-index 3
+	
+	.mainButton
+		background dodgerblue
+		color #fff
+		border-radius rad
+		padding-right 3em
+		
+		&:hover
+			background lighten(dodgerblue, 20%)
+		
+		&.delete, &.unpublish
+			background tomato
+		
+			&:hover
+				background lighten(tomato, 20%)
+		
+	.dropdown
+		background rgba(0, 0, 0, 0.2)
+		color #fff
+		border-radius 0 rad rad 0
+		position absolute
+		top 0
+		right 0
+		width 2em
+	
+	ul
+		display none
+		background #fff
+		box-shadow 0 0 3px rgba(0, 0, 0, 0.2)
+		margin 0
+		padding calc(10px + 0.5em) 0 0.5em 0
+		list-style none
+		position absolute
+		top calc(100% - 10px)
+		width calc(100% - 6px)
+		right 3px
+		z-index 2
+		font-size 0.8em
+		
+		&.show
+			display block
+		
+		li
+			padding 0.5em 1em
+			cursor pointer
+			
+			&:hover
+				background #eee

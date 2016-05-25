@@ -36,7 +36,7 @@ router.post('/', function(req, res) {
 	var options = db.object.options
 	
 	for(var prop in Defaults) {
-		if(req.body[prop]) options[prop] = req.body[prop]
+		if(req.body[prop] != undefined) options[prop] = req.body[prop]
 	}
 	
 	db.write()

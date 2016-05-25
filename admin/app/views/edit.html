@@ -9,15 +9,7 @@
 	<div ratio="5" layout="col" class="editor-container">
 		<div class="editor-header" layout="row" justify="between" align="center">
 			<input type="text" ng-model="post.title" placeholder="Post Title" ratio="1">
-			<div class="editor-buttons">
-				<button ng-click="save()" ng-if="!post.published_at" class="btn btn-blue">Save Draft</button>
-				<button ng-click="unpublish()" ng-if="post.published_at" class="btn btn-red">Unpublish</button>
-				<button ng-click="publish()" class="btn btn-green">
-					<span ng-if="!post.published_at">Publish</span>
-					<span ng-if="post.published_at">Update</span>
-				</button>
-				<button ng-show="post._id" ng-click="delete()" class="btn btn-red">Delete</button>
-			</div>
+			<div class="editor-buttons" combo></div>
 		</div>
 		
 		<div ratio="1" layout="row">

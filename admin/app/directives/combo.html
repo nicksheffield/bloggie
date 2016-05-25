@@ -1,0 +1,9 @@
+<div class="comboButton">
+	<button class="mainButton {{ slugify(current) }}" ng-click="comboActions[current].func()">{{ current }}</button>
+	
+	<button class="dropdown" ng-click="open =! open"><i class="fa fa-angle-down"></i></button>
+	
+	<ul ng-class="{ show: open }">
+		<li ng-repeat="(key, val) in comboActions" ng-if="val.condition()" ng-click="setCurrent(key)">{{ key }}</li>
+	</ul>
+</div>

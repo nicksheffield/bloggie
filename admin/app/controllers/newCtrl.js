@@ -5,15 +5,9 @@ angular.module('app.controllers')
 	$scope.post = new Post
 	
 	$scope.save = function() {
-		if($scope.post._id) {
-			Post.update({id: $scope.post._id}, $scope.post, function(data) {
-				$location.url('/edit/' + $scope.post._id)
-			})
-		} else {
-			$scope.post.$save(function() {
-				$location.url('/edit/' + $scope.post._id)
-			})
-		}
+		$scope.post.$save(function() {
+			$location.url('/edit/' + $scope.post._id)
+		})
 	}
 	
 	$scope.publish = function() {
@@ -22,11 +16,17 @@ angular.module('app.controllers')
 		$scope.save()
 	}
 	
-	$scope.unpublish = function() {
-		$scope.post.published_at = null
-		
-		$scope.save()
-	}
+	$scope.current = "Save Draft"
 	
+	$scope.comboActions = {
+		"Save Draft": {
+			func: $scope.save,
+			condition: function() { return true }
+		},
+		"Publish": {
+			func: $scope.publish,
+			condition: function() { return true }
+		}
+	}
 	
 })

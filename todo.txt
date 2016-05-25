@@ -1,6 +1,7 @@
 Bloggie Todo
 
-[ ] Combo button (publish, unpublish, save, delete)
+[√] Combo button (publish, unpublish, save, delete)
 [ ] Post extras sidebar
-[-] Options page
+[√] Options page
 [√] Make default db file
+[√] Make {{ head }} and {{ foot }} work

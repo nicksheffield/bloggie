@@ -32,7 +32,9 @@ router.get('/', function(req, res) {
 	res.render('home', _.merge({}, config.theme_data, {
 		posts: posts,
 		bodyClass: 'home',
-		pageTitle: 'Home'
+		pageTitle: 'Home',
+		head: db.object.options.head,
+		foot: db.object.options.foot
 	}))
 })
 
@@ -53,7 +55,9 @@ router.get('/:slug', function(req, res) {
 		res.render('404', _.merge({}, config.theme_data, {
 			slug: req.params.slug,
 			bodyClass: 'error 404',
-			pageTitle: '404 - ' + req.params.slug
+			pageTitle: '404 - ' + req.params.slug,
+			head: db.object.options.head,
+			foot: db.object.options.foot
 		}))
 		
 		return
@@ -63,7 +67,9 @@ router.get('/:slug', function(req, res) {
 	
 	var data = _.merge({}, config.theme_data, post, {
 		bodyClass: 'single post-' + post.slug,
-		pageTitle: post.title
+		pageTitle: post.title,
+		head: db.object.options.head,
+		foot: db.object.options.foot
 	})
 	
 	res.render('single', data)
